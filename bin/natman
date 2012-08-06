@@ -11,8 +11,14 @@ var flatiron = require('flatiron'),
 app.use(flatiron.plugins.cli, {
   dir: __dirname,
   usage: [
+    'nananananananana',
+    ' __   __       ___    ___________  ___  ___       ___       __   __ ',
+    '|  \\ |  |     /   \\  |           ||   \\/   |     /   \\     |  \\ |  |',
+    '|   \\|  |    /  ^  \\  ---|  |---- |  \\  /  |    /  ^  \\    |   \\|  |',
+    '|       |   /  /_\\  \\    |  |     |  |\\/|  |   /  /_\\  \\   |       |',
+    '|  |\\   |  /  _____  \\   |  |     |  |  |  |  /  _____  \\  |  |\\   |',
+    '|__| \\__| /__/     \\__\\  |__|     |__|  |__| /__/     \\__\\ |__| \\__|',
     '',
-    'nananananananana Natman!',
     '',
     'natman open <internal private port> <requested public port>',
     '',
@@ -27,7 +33,7 @@ app.use(flatiron.plugins.cli, {
   ]
 });
 
-app.config.use('file', { file: './config/natman.json' });
+app.config.use('file', { file: __dirname + '/../config/natman.json' });
 
 var port = {
   type: "number",
