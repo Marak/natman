@@ -39,12 +39,16 @@ app.commands.open = function () {
   
   var nat = {
     private: null,
-    public: null
+    public: null,
+    gateway: null
   };
   
   if (args.length === 0) {
     app.log.warn('no port or service specified');
     return;
+  }
+  if(app.argv.g && app.argv.g.length > 0) {
+    nat.gateway = app.argv.g.toString();
   }
 
   if (args.length === 1) {
