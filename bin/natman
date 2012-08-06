@@ -1,4 +1,120 @@
+#!/usr/bin/env node
+
 var natman = require('../lib/natman');
 
+var flatiron = require('flatiron'),
+    colors = require('colors'),
+    revalidator = require('revalidator'),
+    utile = require('utile'),
+    app = flatiron.app;
+
+app.use(flatiron.plugins.cli, {
+  dir: __dirname,
+  usage: [
+    'nananananana Natman!',
+    '',
+    'open  - open a new Nat',
+    'close - a new Nat',
+    'list  - list all Nats',
+    'help  - natman can help you'
+  ]
+});
 
 console.log(natman);
+
+function handle (err, info) {
+  console.log(err, info)
+};
+app.config.use('file', { file: './config/natman.json' });
+
+var port = {
+  type: "number",
+  minimum: 1,
+  maximum: 65535,
+};
+
+app.services = app.config.get('services');
+
+app.commands.open = function () {
+  var args = utile.args(arguments);
+  
+  var nat = {
+    private: null,
+    public: null
+  };
+  
+  if (args.length === 0) {
+    app.log.warn('no port or service specified');
+    return;
+  }
+
+  if (args.length === 1) {
+
+    nat.private = args[0]
+
+    if(typeof app.services[nat.private] !== 'undefined') {
+      nat.private = app.services[nat.private]
+    }
+
+    nat.private = Number(nat.private);
+
+    var validate = revalidator.validate({ port: nat.private }, { properties: { port: port }});
+    
+    if(!validate.valid){
+      app.log.error('invalid service ' + args[0].magenta);
+      return;
+    }
+    return natman.createNat(nat, handle);
+  }
+
+  if (args.length === 2) {
+
+    nat.private = args[0]
+    nat.public = args[1];
+
+    if(typeof app.services[nat.private] !== 'undefined') {
+      nat.private = app.services[nat.private]
+    }
+
+    if(typeof app.services[nat.public] !== 'undefined') {
+      nat.public = app.services[nat.public]
+    }
+
+    nat.private = Number(nat.private);
+    nat.public = Number(nat.public);
+
+    var validate = revalidator.validate({ port: nat.private }, { properties: { port: port }});
+    
+    if(!validate.valid){
+      app.log.error('invalid service ' + args[0].magenta);
+      return;
+    }
+
+    var validate = revalidator.validate({ port: nat.public }, { properties: { port: port }});
+    
+    if(!validate.valid){
+      app.log.error('invalid service ' + args[1].magenta);
+      return;
+    }
+
+    return natman.createNat(nat, handle);
+  }
+  
+//  console.log('open', arguments)
+}
+
+app.commands.close = function () {
+  console.log('close', arguments)
+}
+app.commands.list = function () {
+  console.log('list', arguments)
+}
+app.commands.help = function () {
+  console.log('help', arguments)
+}
+
+
+app.start();
+
+
+
