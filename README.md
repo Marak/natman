@@ -52,3 +52,12 @@ To [TooTallNate](https://github.com/TooTallNate/) for making the node [nat-pmp](
 # TODO
  - Add ability to run multiple instances of CLI tool at once
  - Add better support for determining the local network interface gateway
+
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+
+**nananananananana Natman!*
