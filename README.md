@@ -1,8 +1,9 @@
 # natman
 
-[Network Address Translation](http://en.wikipedia.org/wiki/Network_address_translation) management tool built on node.js
-
 ### natman forwards external public ports to internal ports without touching the router.
+
+*It's [Network Address Translation](http://en.wikipedia.org/wiki/Network_address_translation) Management tool built on node.js*
+
 
 
 ## Installation
@@ -13,15 +14,17 @@
 
      natman open <internal private port> <requested public port>
 
-**Example:** Open internal port 22 to the world
+**Example: Open internal port 8000 to the world**
 
-     natman open 22
+     natman open 8000
 
 *Note: If no requested public port is specified, public port will be auto-assigned*
 
-**Example:** Open internal port 22 to the world on port 800
+**Example: Open internal port 8000 to the world on port 9000**
 
-    natman open 22 8000
+    natman open 8000 9000
+
+*Note: If the requested public port is not available, one will be auto-assigned*
 
 ## Built in services
 
