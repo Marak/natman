@@ -11,12 +11,19 @@ var flatiron = require('flatiron'),
 app.use(flatiron.plugins.cli, {
   dir: __dirname,
   usage: [
-    'nananananana Natman!',
     '',
-    'open  - open a new Nat',
-    'close - a new Nat',
-    'list  - list all Nats',
-    'help  - natman can help you'
+    'nananananananana Natman!',
+    '',
+    'natman open <internal private port> <requested public port>',
+    '',
+    'options:',
+    '',
+    '     -g to specify gateway',
+    '',
+    'example:',
+    '',
+    '    natman open 22 8000',
+    ''
   ]
 });
 
