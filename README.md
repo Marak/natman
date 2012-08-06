@@ -2,7 +2,7 @@
 
 ### natman forwards external public ports to internal ports without touching the router.
 
-*It's [Network Address Translation](http://en.wikipedia.org/wiki/Network_address_translation) Management tool built on node.js*
+*It's a [Network Address Translation](http://en.wikipedia.org/wiki/Network_address_translation) Management tool built on node.js*
 
 
 
@@ -28,7 +28,7 @@
 
 ## Built in services
 
-For convenience, Natman comes with a configurable list of built in services. You can customize this list by modifying the "natman.json" file.
+For convenience, Natman comes with a configurable list of built in services. You can customize this list by modifying the [natman.json](https://github.com/Marak/natman/blob/master/config/natman.json) file.
 
 Simple type: `natman open <service> <requested public port>`.
 
