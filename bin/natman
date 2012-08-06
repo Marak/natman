@@ -20,11 +20,6 @@ app.use(flatiron.plugins.cli, {
   ]
 });
 
-console.log(natman);
-
-function handle (err, info) {
-  console.log(err, info)
-};
 app.config.use('file', { file: './config/natman.json' });
 
 var port = {
@@ -34,6 +29,10 @@ var port = {
 };
 
 app.services = app.config.get('services');
+
+//
+// TODO: Clean up this block to one conditional instead of two
+//
 
 app.commands.open = function () {
   var args = utile.args(arguments);
@@ -61,10 +60,10 @@ app.commands.open = function () {
     var validate = revalidator.validate({ port: nat.private }, { properties: { port: port }});
     
     if(!validate.valid){
-      app.log.error('invalid service ' + args[0].magenta);
+      app.log.error('invalid service '.red + args[0].magenta);
       return;
     }
-    return natman.createNat(nat, handle);
+    return natman.createNat(nat);
   }
 
   if (args.length === 2) {
@@ -86,29 +85,22 @@ app.commands.open = function () {
     var validate = revalidator.validate({ port: nat.private }, { properties: { port: port }});
     
     if(!validate.valid){
-      app.log.error('invalid service ' + args[0].magenta);
+      app.log.error('invalid service '.red + args[0].magenta);
       return;
     }
 
     var validate = revalidator.validate({ port: nat.public }, { properties: { port: port }});
-    
+
     if(!validate.valid){
-      app.log.error('invalid service ' + args[1].magenta);
+      app.log.error('invalid service '.red + args[1].magenta);
       return;
     }
 
-    return natman.createNat(nat, handle);
+    return natman.createNat(nat);
   }
   
-//  console.log('open', arguments)
 }
 
-app.commands.close = function () {
-  console.log('close', arguments)
-}
-app.commands.list = function () {
-  console.log('list', arguments)
-}
 app.commands.help = function () {
   console.log('help', arguments)
 }
