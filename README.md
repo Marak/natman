@@ -14,13 +14,13 @@
 
      natman open <internal private port> <requested public port>
 
-**Example: Open internal port 8000 to the world**
+**Open internal port 8000 to the world**
 
      natman open 8000
 
 *Note: If no requested public port is specified, public port will be auto-assigned*
 
-**Example: Open internal port 8000 to the world on port 9000**
+**Open internal port 8000 to the world on port 9000**
 
     natman open 8000 9000
 
