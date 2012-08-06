@@ -1,6 +1,6 @@
 # natman
 
-### natman forwards external public ports to internal ports without touching the router.
+### natman forwards external public ports to internal ports without router access.
 
 *It's a [Network Address Translation](http://en.wikipedia.org/wiki/Network_address_translation) Management tool built on node.js*
 
@@ -10,13 +10,13 @@
 
      npm install natman -g
 
-<img src="http://raw.github.com/Marak/natman/master/screenshots/natman-start.png"></img>
+<img src="https://raw.github.com/Marak/natman/master/screenshots/natman-start.png"></img>
 
 ## Usage
 
      natman open <internal private port> <requested public port>
 
-<img src="http://raw.github.com/Marak/natman/master/screenshots/natman-open.png"></img>
+<img src="https://raw.github.com/Marak/natman/master/screenshots/natman-open.png"></img>
 
 **Open internal port 8000 to the world**
 
