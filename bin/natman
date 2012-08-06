@@ -1,0 +1,4 @@
+var natman = require('../lib/natman');
+
+
+console.log(natman);
