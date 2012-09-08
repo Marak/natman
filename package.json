@@ -1,6 +1,6 @@
 {
   "name": "natman",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Forward public external ports to internal local area network ports without touching your router.",
   "main": "./lib/natman.js",
   "dependencies": {
